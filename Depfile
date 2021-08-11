@@ -1,5 +1,14 @@
 ---
 go:
+  protoc-gen-go:
+    importPath: "google.golang.org/protobuf/cmd/protoc-gen-go"
+    version: "v1.27.0"
+  protoc-gen-go-grpc:
+    importPath: "google.golang.org/grpc/cmd/protoc-gen-go-grpc"
+    version: "v1.1.0"
+  protoc-gen-grpc-gateway:
+    importPath: "github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-grpc-gateway"
+    version: "v2.5.0"
   buf:
     importPath: "github.com/bufbuild/buf/cmd/buf"
     version: "v0.48.2"
