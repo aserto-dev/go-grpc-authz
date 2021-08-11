@@ -1,0 +1,11 @@
+version: v1beta1
+plugins:
+  - name: go
+    out: .
+    opt: paths=source_relative,Maserto/options/ids.proto=github.com/aserto-dev/go-grpc-server/aserto/options,Maserto/api/tenant.proto=github.com/aserto-dev/go-grpc-server/aserto/api
+  - name: go-grpc
+    out: .
+    opt: paths=source_relative,require_unimplemented_servers=false,Maserto/options/ids.proto=github.com/aserto-dev/go-grpc-server/aserto/options,Maserto/api/tenant.proto=github.com/aserto-dev/go-grpc-server/aserto/api
+  - name: grpc-gateway
+    out: .
+    opt: paths=source_relative,logtostderr=true,generate_unbound_methods=true
