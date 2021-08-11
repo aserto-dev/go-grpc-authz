@@ -29,6 +29,8 @@ jobs:
         token: ${{ secrets.VAULT_TOKEN }}
         secrets: |
           kv/data/github  "SSH_PRIVATE_KEY"     | SSH_PRIVATE_KEY;
+          kv/data/buf.build "ASERTO_BUF_TOKEN"  | ASERTO_BUF_TOKEN;
+
 
     - name: Install Vault CLI
       uses: innovationnorway/setup-vault@v1.0.3
@@ -66,7 +68,7 @@ jobs:
           go run mage.go deps
 
     - name: Setup Buf Registry
-      run: echo -e "machine buf.build\npassword ${{ secrets.BUF_API_TOKEN }}" >> ~/.netrc
+      run: echo -e "machine buf.build\npassword ${ASERTO_BUF_TOKEN}" >> ~/.netrc
 
     - name: Generate
       run: go run mage.go generate
