@@ -36,8 +36,8 @@ github.com/BurntSushi/xgb v0.0.0-20160522181843-27f122750802/go.mod h1:IVnqGOEym
 github.com/antihax/optional v1.0.0/go.mod h1:uupD/76wgC+ih3iEmQUL+0Ugr19nfwCT1kdvxnR2qWY=
 github.com/aserto-dev/clui v0.0.1 h1:dK9tmy/0mIdM/Z3G38j0GkQTalGYQ3CyEObND0MGNy8=
 github.com/aserto-dev/clui v0.0.1/go.mod h1:rk87XJefw6Pp8ef3nTirzMVTDE0g2BWojwAZy3cC/TY=
-github.com/aserto-dev/mage-loot v0.2.38 h1:Ec25bSBBOasqdrwMtzmTVVwWpXf2PwEJllsFNaAa2YM=
-github.com/aserto-dev/mage-loot v0.2.38/go.mod h1:YaiUwS2/zUEZqPcNTHVbXOJOymjn6sr6XDKg3cQrPo4=
+github.com/aserto-dev/mage-loot v0.2.40 h1:Mpgp/CqBM9PeyZ3yeiGE88bl1J40UEgYu/opvXpNA/o=
+github.com/aserto-dev/mage-loot v0.2.40/go.mod h1:YaiUwS2/zUEZqPcNTHVbXOJOymjn6sr6XDKg3cQrPo4=
 github.com/census-instrumentation/opencensus-proto v0.2.1/go.mod h1:f6KPmirojxKA12rnyqOA5BBL4O983OfeGPqjHWSTneU=
 github.com/chzyer/logex v1.1.10/go.mod h1:+Ywpsq7O8HXn0nuIou7OrIPyXbp3wmkHB+jjWRnGsAI=
 github.com/chzyer/readline v0.0.0-20180603132655-2972be24d48e/go.mod h1:nSuG5e5PlCu98SY8svDHJxuZscDgtXS6KTTbou5AhLI=
