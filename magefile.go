@@ -47,18 +47,13 @@ func GenerateAuthorizer() error {
 		return err
 	}
 
-	err = buf.Run(
+	return buf.Run(
 		buf.AddArg("generate"),
 		buf.AddArg("--template"),
 		buf.AddArg(filepath.Join("buf", "buf.gen.yaml")),
 		buf.AddArg(bufImage),
 		buf.AddPaths(files),
 	)
-	if err != nil {
-		return err
-	}
-
-	return filepath.Walk("aserto", replacePackageName)
 }
 
 func getClientFiles() ([]string, error) {
@@ -87,60 +82,13 @@ func getClientFiles() ([]string, error) {
 		return clientFiles, err
 	}
 
-	apiFiles, err := fsutil.Glob(filepath.Join(bufExportDir, "aserto", "api", "**", "*.proto"), excludePattern)
-	if err != nil {
-		return clientFiles, err
-	}
+	fmt.Printf("found: %v files \n", len(authorizerFiles))
 
-	optionFiles, err := fsutil.Glob(filepath.Join(bufExportDir, "aserto", "options", "**", "*.proto"), excludePattern)
-	if err != nil {
-		return clientFiles, err
-	}
-
-	files := append(authorizerFiles, apiFiles...)
-	files = append(files, optionFiles...)
-
-	fmt.Printf("found: %v files \n", len(files))
-
-	for _, f := range files {
+	for _, f := range authorizerFiles {
 		clientFiles = append(clientFiles, strings.TrimPrefix(f, bufExportDir+string(filepath.Separator)))
 	}
 
 	return clientFiles, nil
-}
-
-func replacePackageName(path string, fi os.FileInfo, err error) error {
-
-	if err != nil {
-		return err
-	}
-
-	if fi.IsDir() {
-		return nil
-	}
-
-	matched, err := filepath.Match("*.go", fi.Name())
-
-	if err != nil {
-		return err
-	}
-
-	if matched {
-		read, err := ioutil.ReadFile(path)
-		if err != nil {
-			return err
-		}
-
-		newContents := strings.Replace(string(read), "github.com/aserto-dev/proto/aserto", "github.com/aserto-dev/go-grpc-authz/aserto", -1)
-
-		err = ioutil.WriteFile(path, []byte(newContents), 0)
-		if err != nil {
-			return err
-		}
-
-	}
-
-	return nil
 }
 
 // Probably not needed
