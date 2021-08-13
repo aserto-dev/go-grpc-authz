@@ -67,6 +67,9 @@ jobs:
 
           go run mage.go deps
 
+    - name: Clean generated code
+      run: go run mage.go clean
+
     - name: Setup Buf Registry
       run: echo -e "machine buf.build\npassword ${MITZA_BUF_API_TOKEN}" >> ~/.netrc
 
