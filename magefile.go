@@ -35,13 +35,8 @@ func Deps() {
 	deps.GetAllDeps()
 }
 
-// Generate the code
-func Generate() error {
-	return GenerateAuthorizer()
-}
-
 // Generate the Authorizer code
-func GenerateAuthorizer() error {
+func Generate() error {
 
 	files, err := getClientFiles()
 	if err != nil {
@@ -90,8 +85,7 @@ func getClientFiles() ([]string, error) {
 		return clientFiles, err
 	}
 
-	excludePattern := filepath.Join(bufExportDir, "aserto", "**", "private", "**", "*.proto")
-	authorizerFiles, err := fsutil.Glob(filepath.Join(bufExportDir, "aserto", "authorizer", "authorizer", "**", "*.proto"), excludePattern)
+	authorizerFiles, err := fsutil.Glob(filepath.Join(bufExportDir, "aserto", "authorizer", "authorizer", "**", "*.proto"), "")
 	if err != nil {
 		return clientFiles, err
 	}
