@@ -49,6 +49,13 @@ func Generate() error {
 		return err
 	}
 
+	tag, err := buf.GetLatestTag(bufImage)
+	if err != nil {
+		fmt.Println("Could not retrieve tags, using latest")
+	} else {
+		bufImage = fmt.Sprintf("%s:%s", bufImage, tag.Name)
+	}
+
 	// buf requires protoc in the path
 	protocPath := filepath.Join(currnetDirectory, deps.BinPath("protoc"))
 	err = os.Setenv("PATH", oldPath+string(os.PathListSeparator)+filepath.Dir(protocPath))
