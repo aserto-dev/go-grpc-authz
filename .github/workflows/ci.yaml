@@ -77,9 +77,6 @@ jobs:
     - name: Generate
       run: go run mage.go generate
 
-    - name: Build
-      run: go run mage.go build
-
     - name: Commit changes
       if: github.event_name == 'workflow_dispatch'
       uses: EndBug/add-and-commit@v7
