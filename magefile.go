@@ -77,14 +77,18 @@ func gen(bufImage, fileSources string) error {
 	}
 
 	oldPath := os.Getenv("PATH")
-	currnetDirectory, err := os.Getwd()
-	if err != nil {
-		return err
-	}
 
 	// buf requires protoc in the path
-	protocPath := filepath.Join(currnetDirectory, deps.BinPath("protoc"))
-	err = os.Setenv("PATH", oldPath+string(os.PathListSeparator)+filepath.Dir(protocPath))
+	pathSeparator := string(os.PathListSeparator)
+	err = os.Setenv("PATH", oldPath+
+		pathSeparator+
+		filepath.Dir(deps.BinPath("protoc"))+
+		pathSeparator+
+		filepath.Dir(deps.GoBinPath("protoc-gen-go-grpc"))+
+		pathSeparator+
+		filepath.Dir(deps.GoBinPath("protoc-gen-grpc-gateway"))+
+		pathSeparator+
+		filepath.Dir(deps.GoBinPath("protoc-gen-go")))
 	if err != nil {
 		return err
 	}
