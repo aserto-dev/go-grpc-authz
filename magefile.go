@@ -115,6 +115,7 @@ func getClientFiles(fileSources string) ([]string, error) {
 	err = buf.Run(
 		buf.AddArg("export"),
 		buf.AddArg(fileSources),
+		buf.AddArg("--exclude-imports"),
 		buf.AddArg("-o"),
 		buf.AddArg(bufExportDir),
 	)
