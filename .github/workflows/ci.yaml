@@ -18,7 +18,7 @@ on:
 
 env:
   VAULT_ADDR: https://vault.eng.aserto.com/
-  GO_VERSION: "1.16"
+  GO_VERSION: "1.17"
   VAULT_TOKEN:  ${{ secrets.VAULT_TOKEN }}
 
 jobs:
