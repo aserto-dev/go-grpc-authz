@@ -5,8 +5,8 @@ go 1.17
 // replace github.com/aserto-dev/mage-loot => ../mage-loot
 
 require (
-	github.com/aserto-dev/go-grpc v0.7.0
-	github.com/aserto-dev/mage-loot v0.7.0
+	github.com/aserto-dev/go-grpc v0.8.0
+	github.com/aserto-dev/mage-loot v0.8.0
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.7.1
 	github.com/magefile/mage v1.12.1
 	google.golang.org/genproto v0.0.0-20211208223120-3a66f561d7aa
@@ -15,7 +15,7 @@ require (
 )
 
 require (
-	github.com/aserto-dev/clui v0.7.0 // indirect
+	github.com/aserto-dev/clui v0.8.0 // indirect
 	github.com/fatih/color v1.13.0 // indirect
 	github.com/golang/protobuf v1.5.2 // indirect
 	github.com/imdario/mergo v0.3.12 // indirect
