@@ -51,6 +51,9 @@ jobs:
       with:
         fetch-depth: 0
 
+    - name: Gitleaks-check
+      uses: aserto-dev/gitleaks-action@master
+
     - name: Setup Go
       uses: actions/setup-go@v2
       with:
