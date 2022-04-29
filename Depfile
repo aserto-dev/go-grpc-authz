@@ -11,15 +11,4 @@ go:
     version: "v2.7.1"
   buf:
     importPath: "github.com/bufbuild/buf/cmd/buf"
-    version: "v1.0.0-rc8"
-
-bin:
-  protoc:
-    url: 'https://github.com/protocolbuffers/protobuf/releases/download/v{{.Version}}/protoc-{{.Version}}-{{if eq .OS "darwin"}}osx{{else}}{{.OS}}{{end}}-x86_64.zip'
-    version: "3.19.1"
-    sha:
-      linux-amd64: "4b18a69b3093432ee0531bc9bf3c4114f81bde1670ade2875f694180ac8bd7f6"
-      darwin-amd64: "9dbe9128eeba41a969d1e87207e97a3884f68718d84ec5debc92115d5a957286"
-      darwin-arm64: "9dbe9128eeba41a969d1e87207e97a3884f68718d84ec5debc92115d5a957286"
-    zipPaths:
-    - "bin/protoc"
+    version: "v1.3.1"
