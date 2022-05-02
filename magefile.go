@@ -1,3 +1,4 @@
+//go:build mage
 // +build mage
 
 package main
@@ -78,22 +79,18 @@ func gen(bufImage, fileSources string) error {
 
 	oldPath := os.Getenv("PATH")
 
-	// buf requires protoc in the path
 	pathSeparator := string(os.PathListSeparator)
-	err = os.Setenv("PATH", oldPath+
-		pathSeparator+
-		filepath.Dir(deps.BinPath("protoc"))+
-		pathSeparator+
-		filepath.Dir(deps.GoBinPath("protoc-gen-go-grpc"))+
-		pathSeparator+
-		filepath.Dir(deps.GoBinPath("protoc-gen-grpc-gateway"))+
-		pathSeparator+
-		filepath.Dir(deps.GoBinPath("protoc-gen-go")))
-	if err != nil {
-		return err
-	}
+	path := oldPath +
+		pathSeparator +
+		filepath.Dir(deps.GoBinPath("protoc-gen-go-grpc")) +
+		pathSeparator +
+		filepath.Dir(deps.GoBinPath("protoc-gen-grpc-gateway")) +
+		pathSeparator +
+		filepath.Dir(deps.GoBinPath("protoc-gen-go"))
 
-	return buf.Run(
+	return buf.RunWithEnv(map[string]string{
+		"PATH": path,
+	},
 		buf.AddArg("generate"),
 		buf.AddArg("--template"),
 		buf.AddArg(filepath.Join("buf", "buf.gen.yaml")),
