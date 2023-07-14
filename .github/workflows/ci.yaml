@@ -18,7 +18,7 @@ on:
 
 env:
   VAULT_ADDR: https://vault.eng.aserto.com/
-  GO_VERSION: "1.17"
+  GO_VERSION: "1.19"
   VAULT_TOKEN:  ${{ secrets.VAULT_TOKEN }}
 
 jobs:
@@ -26,7 +26,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Read Configuration
-      uses: hashicorp/vault-action@v2.4.1
+      uses: hashicorp/vault-action@v2.5.0
       id: vault
       with:
         url: ${{ env.VAULT_ADDR }}
@@ -36,12 +36,12 @@ jobs:
           kv/data/buf.build "ASERTO_BUF_TOKEN"  | ASERTO_BUF_TOKEN;
 
     - name: Checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         fetch-depth: 0
 
     - name: Setup Go
-      uses: actions/setup-go@v2
+      uses: actions/setup-go@v4
       with:
         go-version: ${{ env.GO_VERSION }}
 
@@ -54,7 +54,7 @@ jobs:
           git config --global url."git@github.com:".insteadOf https://github.com/
           git config --global user.email "github-bot@aserto.com"
           git config --global user.name "Aserto Bot"
-          
+
           eval `ssh-agent`
           ssh-add $HOME/.ssh/id_rsa
 
